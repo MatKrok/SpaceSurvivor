@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform targetDestination;
+    GameObject targetGameObject;
     [SerializeField] float speed;
 
     Rigidbody2D rgdbd2d;
@@ -12,14 +14,25 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rgdbd2d = GetComponent<Rigidbody2D>();
+        targetGameObject = targetDestination.gameObject;
     }
 
     private void Update()
     {
         Vector3 direction = (targetDestination.position - transform.position).normalized;
         rgdbd2d.velocity = direction * speed;
+    }
 
-        Debug.Log("dir"+direction);
-        Debug.Log("velo"+rgdbd2d.velocity);
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject == targetGameObject)
+        {
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        Debug.Log("Ship is under attack!!");
     }
 }
