@@ -14,9 +14,12 @@ public class Enemy : MonoBehaviour
         rgdbd2d = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Vector3 direction = (targetDestination.position - transform.position).normalized;
         rgdbd2d.velocity = direction * speed;
+
+        Debug.Log("dir"+direction);
+        Debug.Log("velo"+rgdbd2d.velocity);
     }
 }
