@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class PulseWeapon : MonoBehaviour
 {
-    float timeToAttack = 4f;
+    [SerializeField] float timeToAttack = 4f;
     float timer;
 
     [SerializeField] GameObject frontPulseObject;
     [SerializeField] GameObject backPulseObject;
+    [SerializeField] Vector2 pulseAttackSize = new Vector2(4f,2f);
+    [SerializeField] int pulseDamage = 1;
+
     private void Update()
     {
         timer -= Time.deltaTime;
@@ -21,10 +24,25 @@ public class PulseWeapon : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("Attack");
         timer = timeToAttack;
 
         frontPulseObject.SetActive(true);
-        backPulseObject.SetActive(true);
+        //backPulseObject.SetActive(true);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(frontPulseObject.transform.position, pulseAttackSize, 0f);
+        ApplyDamage(colliders);
+    }
+
+    private void ApplyDamage(Collider2D[] colliders)
+    {
+        for(int i=0;i<colliders.Length;i++)
+        {
+            Debug.Log(colliders[i].gameObject.name);
+            Enemy e = colliders[i].GetComponent<Enemy>();
+            if (e != null)
+            {
+                colliders[i].GetComponent<Enemy>().TakeDamage(pulseDamage);
+            }
+            
+        }
     }
 }

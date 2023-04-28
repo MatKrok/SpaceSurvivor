@@ -7,9 +7,13 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform targetDestination;
     GameObject targetGameObject;
+    Character targetCharacter;
     [SerializeField] float speed;
 
     Rigidbody2D rgdbd2d;
+
+    [SerializeField] int hp = 999;
+    [SerializeField] int damage = 1;
 
     private void Awake()
     {
@@ -33,6 +37,21 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("Ship is under attack!!");
+        if (targetCharacter == null)
+        {
+            targetCharacter = targetGameObject.GetComponent<Character>();
+        }
+
+        targetCharacter.TakeDamage(damage);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+
+        if (hp < 1)
+        {
+            Destroy(gameObject);
+        }
     }
 }
