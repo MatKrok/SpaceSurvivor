@@ -37,10 +37,10 @@ public class PulseWeapon : MonoBehaviour
         for(int i=0;i<colliders.Length;i++)
         {
             Debug.Log(colliders[i].gameObject.name);
-            Enemy e = colliders[i].GetComponent<Enemy>();
+            IDamagable e = colliders[i].GetComponent<IDamagable>();
             if (e != null)
             {
-                colliders[i].GetComponent<Enemy>().TakeDamage(pulseDamage);
+                e.TakeDamage(pulseDamage);
             }
             
         }

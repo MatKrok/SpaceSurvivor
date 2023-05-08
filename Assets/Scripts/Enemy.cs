@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
-    [SerializeField] Transform targetDestination;
+    Transform targetDestination;
     GameObject targetGameObject;
     Character targetCharacter;
     [SerializeField] float speed;
@@ -15,10 +15,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] int hp = 999;
     [SerializeField] int damage = 1;
 
+    [SerializeField] int experience_reward = 400;
+
     private void Awake()
     {
         rgdbd2d = GetComponent<Rigidbody2D>();
-        targetGameObject = targetDestination.gameObject;
+    }
+    public void SetTarget(GameObject target)
+    {
+        targetGameObject = target;
+        targetDestination = target.transform;
     }
 
     private void Update()
@@ -51,6 +57,7 @@ public class Enemy : MonoBehaviour
 
         if (hp < 1)
         {
+            targetGameObject.GetComponent<Level>().AddExperience(experience_reward);
             Destroy(gameObject);
         }
     }
