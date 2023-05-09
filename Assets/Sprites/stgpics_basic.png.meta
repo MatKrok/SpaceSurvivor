@@ -13361,7 +13361,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -13369,6 +13369,27 @@ TextureImporter:
       bones: []
       spriteID: 7af770333bdfdbf41ae912471ead46c2
       internalID: -1105094636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: expdrop
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 168
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed8546c018da65a458fefec1dbed5ca9
+      internalID: -1309510085
       vertices: []
       indices: 
       edges: []
@@ -13384,6 +13405,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      expdrop: -1309510085
       stgpics_basic_0: 21300000
       stgpics_basic_1: 21300002
       stgpics_basic_10: 21300020

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1871955687320679294}
   - component: {fileID: 1871955687320679295}
   - component: {fileID: -2070405666859934045}
+  - component: {fileID: -2218426410624203501}
   m_Layer: 0
   m_Name: DropChest
   m_TagString: Untagged
@@ -137,5 +138,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311c96e8462dd6e4693fc9e809ce0821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPickUp: {fileID: 8416426184136159271, guid: 0ac507e0347ceb84e8d5f4733d61da6d, type: 3}
-  chance: 0.207
+  dropItemPrefab: {fileID: 8416426184136159271, guid: 0ac507e0347ceb84e8d5f4733d61da6d, type: 3}
+  chance: 0.506
+--- !u!114 &-2218426410624203501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871955687320679292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3ee5437d0ee4f4b911bf6dc1a0797b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
