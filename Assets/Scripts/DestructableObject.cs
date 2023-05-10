@@ -7,5 +7,6 @@ public class DestructableObject : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         Destroy(gameObject);
+        GetComponent<DropOnDestroy>().CheckDrop();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,13 @@ public class Character : MonoBehaviour
 {
     public int maxHp = 1000;
     public int currentHp = 1000;
+
+    public int armor = 0;
+
     [SerializeField] StatusBar hpBar;
 
     [HideInInspector] public Level level;
-
+    private bool isDead;
 
     private void Awake()
     {
@@ -22,13 +26,22 @@ public class Character : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(isDead == true) { return; }
+        ApplyArmor(ref damage);
         currentHp -= damage;
 
         if (currentHp <= 0)
         {
-            Debug.Log("Ship Destroyed GAME OVER");
+            GetComponent<CharacterGameOver>().GameOver();
+            isDead = true;
         }
         hpBar.SetState(currentHp, maxHp);
+    }
+
+    private void ApplyArmor(ref int damage)
+    {
+        damage -= armor;
+        if(damage < 0) { damage = 0; }
     }
 
     public void Heal(int amount)
